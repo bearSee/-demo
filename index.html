@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>计算器demo</title>
+    <style>.btn { margin: 30px;width: 100px;padding: 12px 30px;text-align: center;background: skyblue;cursor: pointer;}</style>
+    <link rel="stylesheet" href="./utils/calculator.css">
+    <script src="./utils/calculator.js"></script>
+  </head>
+  <body>
+    <div class="btn" onclick="calculator.destroy()">销毁</div>
+    <div class="btn" onclick="calculator.init()">重新创建实例</div>
+    <div id="app"></div>
+  </body>
+  <script>
+      var calculator = new Calculator('app', {
+          // 是否允许点击结果值时，将值复制到粘贴板
+          copyValue: true,
+          // 是否展示计算记录面板
+          showHistory: false,
+          // 计算完成时触发的事件，参数为 Number 类型的值
+          computeFinish: (value) => {
+              console.log('compute-finish', value);
+          },
+          // 点击计算结果值触发的事件，参数为 Number 类型的值
+          chooseResult: (value) => {
+              console.log('choose-result', value);
+          },
+          // 点击计算记录面板内的记录值触发的事件，参数为 Number 类型的值
+          chooseNumber: (value) => {
+              console.log('choose-number', value);
+          },
+      });
+  </script>
+</html>
